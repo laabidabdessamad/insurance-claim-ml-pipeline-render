@@ -45,18 +45,14 @@ jobs:
     needs: test
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     steps:
       - uses: actions/checkout@v4
 
-      - name: Log in to GHCR
+      - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push image
         uses: docker/build-push-action@v6
@@ -64,8 +60,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/insurance-claim-api:latest
-            ghcr.io/${{ github.repository_owner }}/insurance-claim-api:${{ github.sha }}
+            docker.io/${{ secrets.DOCKERHUB_USERNAME }}/insurance-claim-api:latest
+            docker.io/${{ secrets.DOCKERHUB_USERNAME }}/insurance-claim-api:${{ github.sha }}
 
       # - name: Trigger Render deploy
       #   run: |
@@ -73,4 +69,4 @@ jobs:
       #       --url "https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys" \
       #       --header "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
       #       --header "Content-Type: application/json" \
-      #       --data '{"imageUrl": "ghcr.io/${{ github.repository_owner }}/insurance-claim-api:${{ github.sha }}"}'
+      #       --data '{"imageUrl": "docker.io/${{ secrets.DOCKERHUB_USERNAME }}/insurance-claim-api:${{ github.sha }}"}'
