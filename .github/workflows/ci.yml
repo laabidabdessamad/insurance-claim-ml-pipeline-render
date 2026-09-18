@@ -65,8 +65,4 @@ jobs:
 
       - name: Trigger Render deploy
         run: |
-          curl -f --request POST \
-            --url "https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys" \
-            --header "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
-            --header "Content-Type: application/json" \
-            --data '{"imageUrl": "docker.io/${{ secrets.DOCKERHUB_USERNAME }}/insurance-claim-api:${{ github.sha }}"}'
+          curl -f "${{ secrets.RENDER_DEPLOY_HOOK }}&imgURL=docker.io%2F<your-dockerhub-username>%2Finsurance-claim-api%3A${{ github.sha }}"
