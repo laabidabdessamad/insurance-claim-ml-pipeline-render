@@ -16,7 +16,12 @@ import streamlit as st
 DEFAULT_API_URL = "https://insurance-claim-api-latest.onrender.com"
 API_URL = os.environ.get("API_URL", DEFAULT_API_URL)
 
-st.set_page_config(page_title="Car Insurance Claim Risk", page_icon="🚗", layout="centered")
+st.set_page_config(
+    page_title="Car Insurance Claim Risk",
+    page_icon="🚗",
+    layout="centered",
+    initial_sidebar_state="collapsed",
+)
 
 st.title("🚗 Car insurance claim risk")
 st.caption(
