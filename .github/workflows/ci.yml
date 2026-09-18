@@ -65,4 +65,4 @@ jobs:
 
       - name: Trigger Render deploy
         run: |
-          curl -f "${{ secrets.RENDER_DEPLOY_HOOK }}&imgURL=docker.io%2F<your-dockerhub-username>%2Finsurance-claim-api%3A${{ github.sha }}"
+          curl -f "${{ secrets.RENDER_DEPLOY_HOOK }}&imgURL=docker.io%2Flaabidabdessamad%2Finsurance-claim-api%3A${{ github.sha }}"
