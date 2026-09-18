@@ -13,7 +13,7 @@ import os
 import requests
 import streamlit as st
 
-DEFAULT_API_URL = "http://insura-infer-oeuqdmjyqi37-283485911.eu-west-3.elb.amazonaws.com/"
+DEFAULT_API_URL = "https://insurance-claim-api-latest.onrender.com"
 API_URL = os.environ.get("API_URL", DEFAULT_API_URL)
 
 st.set_page_config(page_title="Car Insurance Claim Risk", page_icon="🚗", layout="centered")
