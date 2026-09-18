@@ -1,0 +1,17 @@
+data/
+notebooks/
+tests/
+mlruns/
+mlflow.db
+.pytest_cache/
+__pycache__/
+*.pyc
+.git/
+infra/
+app/
+
+# Terraform
+*.tfstate
+.terraform
+*.tfvars
+crash.log

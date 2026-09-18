@@ -1,0 +1,22 @@
+# data/*.csv
+mlruns/
+mlflow.db
+# models/*.joblib
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+.DS_Store
+
+
+# Terraform
+*.tfstate
+.terraform*
+*.tfvars
+crash.log
+terraform.tfstate.backup
+
+# cdk
+cdk.out/
